@@ -8,7 +8,7 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("bootstrap")
-require("../includes/slides.js")
+require("../includes/browse.js")
 import '@fortawesome/fontawesome-free/js/all';
 
 
