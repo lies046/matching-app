@@ -1,0 +1,23 @@
+.profile-bar{
+  padding: 15px 25px;
+  background: linear-gradient(262deg, #ff7845, #fd267d);
+  margin-right: -15px;
+  a.my-profile{
+    font-size: 24px;
+    // line-height: 40px;
+  }
+
+  a.sign-out{
+    font-size: 16px;
+  }
+  a:hover{
+    text-decoration: none;
+  }
+}
+
+.nav-match-sidebar .nav-link.active{
+  border-bottom: 2px solid #fd267d;
+}
+.profile-thumb{
+  border: 2px solid #fff;
+}
