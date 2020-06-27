@@ -3,7 +3,7 @@ class BrowseController < ApplicationController
     liked_account_ids = Like.where(account_id: current_account.id).map(&:liked_account_id)
     liked_account_ids << current_account.id
      @matches = current_account.matches
-    @users = Account.where.not(id: liked_account_ids)
+    @users = Account.includes(:images_attachments).where.not(id: liked_account_ids)
   end
 
   def approve
@@ -33,6 +33,7 @@ class BrowseController < ApplicationController
     
     conversation = Conversation.between(id, current_account.id)
     @conversation = conversation.size > 0 ? conversation.first : Conversation.new
+    @messages = @conversation.messages.includes(account: :images_attachments) if @conversation.persisted?
     @message = @conversation.messages.build
     
     if @profile.present?
