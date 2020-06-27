@@ -8,9 +8,9 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("bootstrap")
+require('jquery')
 require("../includes/browse.js")
 import '@fortawesome/fontawesome-free/js/all';
-import $ from 'jquery';
 global.$ = jQuery;
 
 

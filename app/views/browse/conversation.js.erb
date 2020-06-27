@@ -1,2 +1,6 @@
-$("#conversation").html("<%= escape_javascript(render partial: 'browse/conversation') %>");
-$("#conversation").show();
+$("#conversation").html("<%= escape_javascript(render partial: 'browse/conversation') %>").show();
+
+
+$("#close-conversation").on("click", function () {
+  $("#conversation").hide();
+});
