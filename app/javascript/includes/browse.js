@@ -1,11 +1,22 @@
 $(function () {
   var $activeSlide = $('#slides .slide:first-child');
 
-  // $activeSlide.addClass("showing");
   $(".match-tile").on("click", function () {
     var account_id = $(this).data("id")
-    console.log(account_id)
-  })
+
+    $.ajax({
+      url: "/get/conversation/" + account_id,
+      method: "post",
+      dataType: "script"
+    })
+
+    // $("#conversation").show();
+  });
+
+
+  $(".close-conversation").on("click", function () {
+    $("#conversation").hide();
+  });
 
   $("#decline").on("click", function () {
     goToSlide('decline');
