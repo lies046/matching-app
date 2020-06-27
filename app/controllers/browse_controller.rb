@@ -1,21 +1,30 @@
 class BrowseController < ApplicationController
   def browse
-    liked_account_ids = Like.where(account_id: current_account.id).map(&:liked_account_id)
-    liked_account_ids << current_account.id
-     @matches = current_account.matches
-    @users = Account.includes(:images_attachments).where.not(id: liked_account_ids)
+    @matches = Match.matches_for(current_account.id)
+    @users = Match.recommended_matches_for(current_account.id )
+    @conversations = Conversation.includes(:messages).where("conversations.sender_id = ? OR conversations.recipient_id = ?", current_account.id, current_account.id)
+  end
+
+  def get_more_user
   end
 
   def approve
     account_id = params[:id]
-    logger.debug "User id for mathing is #{account_id}"
-
-    new_like = Like.new(liked_account_id: account_id)
-    new_like.account_id = current_account.id
+    match = Match.between( account_id, current_account.id )
     
-    if new_like.save
-     exisiting_like = Like.where(account_id: account_id, liked_account_id: current_account.id).count
-      @they_like_us = exisiting_like > 0
+    if match.present?
+      match = match.first
+
+      if match.account_1 == current_account.id
+        match.account_1_approves = true
+      else
+        match.account_2_approves = true
+      end
+    else
+      match = Match.new(account_1: current_account.id, account_2: account_id, account_1_approves: true)
+    end
+    
+    if match.save
 
     else
     end
@@ -28,8 +37,8 @@ class BrowseController < ApplicationController
   def open_conversation
     id = params[:id]
     @profile = Account.find(id)
-    likes = Like.where(account_id: current_account.id, liked_account_id: id)
-    @match = likes.first if likes.size > 0
+    match = Match.between(current_account.id, id)
+    @match = match.first if match.present?
     
     conversation = Conversation.between(id, current_account.id)
     @conversation = conversation.size > 0 ? conversation.first : Conversation.new

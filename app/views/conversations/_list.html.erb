@@ -1,0 +1,9 @@
+<% if @conversations.size > 0 %>
+  <% @conversations.each do |conversation| account = get_account_from_conversation(conversation)%>
+    <%= profile_thumbnail account %>
+    <strong><%= current_account.first_name %></strong>
+    <%= conversation.messages.last.body %>
+  <% end %>
+<% else %>
+  <p>No messages to display.</p>
+<% end %>
