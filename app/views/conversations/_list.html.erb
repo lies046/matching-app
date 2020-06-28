@@ -1,7 +1,7 @@
 <% if @conversations.size > 0 %>
   <% @conversations.each do |conversation| account = get_account_from_conversation(conversation)%>
     <div class="row">
-      <div class="col">
+      <div class="col open-conversation" data-id="<%= account.id %>">
     <%= profile_thumbnail account %>
     <strong><%= account.first_name %></strong><br />
     <%= simple_format conversation.messages.last.body %>

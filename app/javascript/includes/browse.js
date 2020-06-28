@@ -12,6 +12,17 @@ $(function () {
   });
 
 
+  $(".open-conversation").on("click", function () {
+    var account_id = $(this).data("id")
+
+    $.ajax({
+      url: "/get/conversation/" + account_id,
+      method: "post",
+      dataType: "script"
+    })
+  });
+
+
   $("#close-conversation").on("click", function () {
     $("#conversation").hide();
   });
