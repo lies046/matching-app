@@ -34,6 +34,10 @@
   }
 }
 
+#decline, #approve{
+  cursor: pointer;
+}
+
 .showing{
   opacity: 1;
   z-index: 2;
@@ -44,6 +48,7 @@
   margin: 0 auto;
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: #ddd;
 }
 
 .user-details{
@@ -53,24 +58,7 @@
   left: 50%;
   width: 200px;
   margin-left: -100px;
-  // text-align: center;
   .user-name{
     font-size: 28px;
   }
 }
-
-// .slide:nth-of-type(1) {
-//   background: red;
-// }
-// .slide:nth-of-type(2) {
-//   background: orange;
-// }
-// .slide:nth-of-type(3) {
-//   background: green;
-// }
-// .slide:nth-of-type(4) {
-//   background: blue;
-// }
-// .slide:nth-of-type(5) {
-//   background: purple;
-// }
