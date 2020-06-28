@@ -5,9 +5,6 @@ class BrowseController < ApplicationController
     @conversations = Conversation.includes(:messages).where("conversations.sender_id = ? OR conversations.recipient_id = ?", current_account.id, current_account.id)
   end
 
-  def get_more_user
-  end
-
   def approve
     account_id = params[:id]
     match = Match.between( account_id, current_account.id )
@@ -20,15 +17,10 @@ class BrowseController < ApplicationController
       else
         match.account_2_approves = true
       end
+    
     else
       match = Match.new(account_1: current_account.id, account_2: account_id, account_1_approves: true)
     end
-    
-    if match.save
-
-    else
-    end
-
   end
 
   def decline
@@ -45,11 +37,6 @@ class BrowseController < ApplicationController
       end
     else
       match = Match.new(account_1: current_account.id, account_2: account_id, account_1_approves: false)
-    end
-    
-    if match.save
-
-    else
     end
   end
 

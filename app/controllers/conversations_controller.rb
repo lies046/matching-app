@@ -4,11 +4,6 @@ def create
   @conversation = Conversation.new(conversation_params)
   @conversation.sender_id = current_account.id
   @conversation.messages.first.account_id = current_account.id
-  if @conversation.save!
-    logger.debug "conversation has been saved"
-  else
-    logger.debug "unable to save conversation"
-  end
 end
 
 def update
@@ -26,9 +21,9 @@ def update
   end
 end
 
-private
-def conversation_params
-  params.require(:conversation).permit(:recipient_id, messages_attributes: [:body, :account_id])
-end
+  private
+  def conversation_params
+    params.require(:conversation).permit(:recipient_id, messages_attributes: [:body, :account_id])
+  end
 
 end

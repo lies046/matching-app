@@ -19,8 +19,8 @@
         </div>
       </div>
     </div>
-
   </div>
+  
   <div class="col-9 col-md-8">
     <ul id="slides">
       <% @users.each_with_index do |user, i| %>
@@ -28,9 +28,9 @@
         <div class="image-carousel" style="background-image: url('<%= url_for user.images.first %>')">
         </div>
         <div class="user-details">
-          <span class="user-name"><%= user.first_name %></span>, 20<br />
-          <i class="fa fa-graduation-cap mr-1"></i><%= user.education %><br />
-          <i class="fa fa-map-marker mr-3"></i><%= user.location %><br />
+          <span class="user-name"><%= user.first_name %></span><br />
+            <i class="fa fa-graduation-cap mr-1"></i><%= user.education %><br />
+            <i class="fa fa-map-marker mr-3"></i><%= user.location %><br />
           <span class="profile-info fa-stack">
             <i class="fa fa-circle text-white fa-stack-2x"></i>
             <i class="fa fa-info text-dark fa-stack-1x"></i>
@@ -45,16 +45,15 @@
 
     <div id="slide-controls">
       <div id="decline" class="d-inline-block fa-stack fa-2x">
-      <i class="fa fa-circle fa-stack-2x text-white"></i>
-       <i class="fa fa-times fa-stack-1x text-danger"></i>
+        <i class="fa fa-circle fa-stack-2x text-white"></i>
+        <i class="fa fa-times fa-stack-1x text-danger"></i>
       </div>
       <div id="approve" class="d-inline-block fa-stack fa-2x">
-      <i class="fa fa-circle fa-stack-2x text-white"></i>      
-      <i class="fa fa-heart fa-stack-1x text-success"></i>
+        <i class="fa fa-circle fa-stack-2x text-white"></i>
+        <i class="fa fa-heart fa-stack-1x text-success"></i>
       </div>
     </div>
-      <div id="conversation">
-      </div>
+      <div id="conversation"></div>
   </div>
 </div>
 
