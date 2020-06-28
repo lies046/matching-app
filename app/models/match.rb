@@ -24,6 +24,6 @@ class Match < ApplicationRecord
       new_id = match.account_1 == id ? match.account_2 : match.account_1
       ignore_ids << new_id
     end
-    Account.includes(:images_attachments).where.not(id: ignore_ids).limit(10)
+    Account.includes(:images_attachments).where.not(id: ignore_ids).order(id: :asc).limit(10)
   end
 end

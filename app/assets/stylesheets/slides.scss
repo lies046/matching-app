@@ -25,10 +25,16 @@
 }
 
 #slide-controls{
+  position: relative;
+  z-index: 1000;
   font-size: 20px;
-  margin: 20px 0 400px;
+  margin: 30px 0 400px;
   width: 100%;
   text-align: center;
+
+  &.open{
+    margin-top: 170px;
+  }
   span{
     margin: 0 10px;
   }
@@ -61,4 +67,25 @@
   .user-name{
     font-size: 28px;
   }
+}
+
+.user-details .profile-info{
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  cursor: pointer;
+}
+
+.more-details{
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 400px;
+  left: 50%;
+  width: 300px;
+  height: 150px;
+  margin-left: -150px;
+  background: #fff;
+  padding: 20px;
+  overflow-y: scroll;
 }
